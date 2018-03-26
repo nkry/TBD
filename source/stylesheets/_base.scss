@@ -5,11 +5,12 @@ html,body {
 	padding: 0;
 	overflow: hidden;
 	-webkit-overflow-scrolling: touch;
-	font-size: 16px; 
-	// @include breakpoint--a {
-	// 	overflow: scroll;
-	//  font-size: 1.25vw;
-	// }
+	font-size: 18px; 
+	font-family: 'Work Sans', sans-serif;
+	@include breakpoint--a {
+	//  overflow: scroll;
+	 font-size: 12px;
+	}
 }
 
 body {
@@ -24,15 +25,62 @@ body {
 	height: 100%;
 	display: inline-block;
 	position: absolute;
-	border-right: 1.5px solid black;
+	border-right: 1px solid black;
+	&__info {
+		z-index: 3;
+		font-size: 1.5em;
+		position: absolute;
+		margin: 30px 0 0 30px;
+		display: inline-block;
+		width: calc(50vw - 60px);
+		@include breakpoint--a {
+			font-size: 1.25em;
+			width: calc(50vw - 30px);
+			margin: 15px 0 0 15px;
+		}
+		& #logo {
+			// this is variable — will need breakpoints
+			height: 20px;
+			width: auto;
+			display: inline-block;
+			transition: display .5s linear;
+			@include breakpoint--a {
+				height: 12px;
+			}
+		}
+		& #initial {
+			display: none;
+			// opacity: 0;
+			transition: display .5s linear;
+		}
+		& #underline {
+			text-decoration: underline;
+		}
+		&:hover {
+			cursor: pointer;
+			& #logo {
+				display: none;
+			}
+			& #initial {
+				display: inline-block;
+				// opacity: 1;
+			}
+		}
+	}
 	&__large {
-		font-size: 4.5em;
+		z-index: 2;
+		font-size: 3.5em;
+		letter-spacing: -0.025em;
 		display: inline-block;
 		position: relative;
 		left: 0;
 		top: 0;
 		animation: moveLeftX 3s linear 0s infinite alternate, moveLeftY 4.5s linear 0s infinite alternate;
 		will-change: top, left;
+		@include breakpoint--a {
+			font-size: 2.5em;
+			animation: moveLeftXMobile 3s linear 0s infinite alternate, moveLeftYMobile 4.5s linear 0s infinite alternate;
+		}
 		&:hover {
 			cursor: pointer;
 			-webkit-animation-play-state: paused;
@@ -45,13 +93,43 @@ body {
 
 .right--wrapper {
 	margin: 0 auto;
-	width: calc(50% - 1.5px);
+	width: calc(50% - 1px);
 	height: 100%;
 	display: inline-block;
 	position: absolute;
-	left: calc(50% + 1.5px);
+	left: calc(50% + 1px);
+	&__info {
+		z-index: 3;
+		font-size: 1.5em;
+		position: absolute;
+		margin: 30px 30px 0 0;
+		right: 0;
+		text-align: right;
+		display: inline-block;
+		width: calc(50vw - 60px);
+		@include breakpoint--a {
+			font-size: 1.25em;
+			width: calc(50vw - 30px);
+			margin: 15px 15px 0 0;
+		}
+		& a {
+			// color: black;
+			text-decoration: none;
+			&:after{
+				content: 'Contact';
+			}
+			&:hover:after{
+				content: 'info@tbd.studio';
+			}
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
 	&__large {
-		font-size: 4.5em;
+		z-index: 2;
+		font-size: 3.5em;
+		letter-spacing: -0.025em;
 		display: inline-block;
 		position: relative;
 		left: 0;
@@ -59,6 +137,10 @@ body {
 		// negative delay time to start at different points
 		animation: moveRightX 3s linear -2s infinite alternate, moveRightY 4.5s linear -2s infinite alternate;
 		will-change: top, left;
+		@include breakpoint--a {
+			font-size: 2.5em;
+			animation: moveRightXMobile 3s linear 0s infinite alternate, moveRightYMobile 4.5s linear 0s infinite alternate;
+		}
 		&:hover {
 			cursor: pointer;
 			-webkit-animation-play-state: paused;
@@ -69,22 +151,33 @@ body {
 	}
 }
 
+// --- desktop vars ---
 // dependant on type size
 $verticalPadding: 10px;
-
 // also dependant on type size
-$leftTextWidth: 296px;
-// 83px (original height) - 10px (approx. padding)
-$leftTextHeight: 73px;
-
-$rightTextWidth: 212px;
-// 83px (original height) - 10px (approx. padding)
-$rightTextHeight: 73px;
-
+$leftTextWidth: 247px;
+// 72px (original height) - 10px (approx. padding)
+$leftTextHeight: 62px;
+$rightTextWidth: 178px;
+// 72px (original height) - 10px (approx. padding)
+$rightTextHeight: 62px;
 $leftVerticalDist: calc(100vh - #{$leftTextHeight});
 $rightVerticalDist: calc(100vh - #{$rightTextHeight});
 
 
+// --- mobile vars ---
+$verticalPaddingMobile: 10px;
+// also dependant on type size
+$leftTextWidthMobile: 119px;
+// 72px (original height) - 10px (approx. padding)
+$leftTextHeightMobile: 35px;
+$rightTextWidthMobile: 86px;
+// 72px (original height) - 10px (approx. padding)
+$rightTextHeightMobile: 35px;
+$leftVerticalDistMobile: calc(100vh - #{$leftTextHeightMobile});
+$rightVerticalDistMobile: calc(100vh - #{$rightTextHeightMobile});
+
+// --- desktop animations ---
 @keyframes moveLeftX {
 	0% { 
 		left: 0;
@@ -115,6 +208,44 @@ $rightVerticalDist: calc(100vh - #{$rightTextHeight});
 @keyframes moveRightY {
 	0% {
 		top: $rightVerticalDist; 
+	} 
+	100% { 
+		top: -10px; 
+	}
+}
+
+// --- mobile animations ---
+
+@keyframes moveLeftXMobile {
+	0% { 
+		left: 0;
+	} 
+	100% { 
+		left: calc(100% - #{$leftTextWidthMobile}); 
+	}
+}
+
+@keyframes moveLeftYMobile {
+	0% { 
+		top: -10px;
+	} 
+	100% { 
+		top: $leftVerticalDistMobile; 
+	}
+}
+
+@keyframes moveRightXMobile {
+  0% { 
+		left: 0;
+	 } 
+	 100% { 
+		left: calc(100% - #{$rightTextWidthMobile}); 
+	}
+}
+
+@keyframes moveRightYMobile {
+	0% {
+		top: $rightVerticalDistMobile; 
 	} 
 	100% { 
 		top: -10px; 

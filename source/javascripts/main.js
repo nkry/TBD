@@ -64,19 +64,31 @@ function invert() {
     	$('body').css({
     		"background-color": 'black',
     		"color": 'white'
-    	})
+        })
+        $('a').css({
+            "color": 'white'
+        })
     	$(".left--wrapper").css({
-    		'border-right': '1.5px solid white'
-    	})
+    		'border-right': '1px solid white'
+        })
+        $('#logo').css({
+            'fill': 'white'
+        })
     }
     else {
     	$('body').css({
     		"background-color": 'white',
     		"color": 'black'
-    	})
+        })
+        $('a').css({
+            "color": 'black'
+        })
     	$(".left--wrapper").css({
-    		'border-right': '1.5px solid black'
-    	})
+    		'border-right': '1px solid black'
+        })
+        $('#logo').css({
+            'fill': 'black'
+        })
     }
 }
 

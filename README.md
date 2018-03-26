@@ -4,3 +4,4 @@
 - Need to add browser prefixes 
 - Prevent initial flash in firefox
 - Inverse colors on mouseover?
+- Mobile/make responsive
