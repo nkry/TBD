@@ -1,4 +1,6 @@
 ## TB.D Holding Page
 
+- Add work sans typeface
 - Need to add browser prefixes 
-- Make animation so it hits diff corners
+- Prevent initial flash in firefox
+- Inverse colors on mouseover?
