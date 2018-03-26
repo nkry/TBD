@@ -1,0 +1,64 @@
+$bp--b: 480px;
+$bp--c: 768px;
+$bp--d: 1260px;
+$bp--e: 1600px;
+
+
+$bp--a--min: 0;
+$bp--a--max: $bp--b;
+$bp--b--min: $bp--b + 1px;
+$bp--b--max: $bp--c - 1px;
+$bp--c--min: $bp--c;
+$bp--c--max: $bp--d - 1px;
+$bp--d--min: $bp--d;
+$bp--d--max: $bp--e - 1px;
+$bp--e--min: $bp--e;
+$bp--e--max: 10000000px;
+
+@mixin breakpoint--a {
+  @media (min-width: $bp--a--min) and (max-width: $bp--a--max) {
+    @content;
+  }
+}
+
+@mixin breakpoint--b {
+  @media (min-width: $bp--b--min) and (max-width: $bp--b--max) {
+    @content;
+  }
+}
+
+@mixin breakpoint--c {
+  @media (min-width: $bp--c--min) and (max-width: $bp--c--max) {
+    @content;
+  }
+}
+
+@mixin breakpoint--d {
+  @media (min-width: $bp--d--min) and (max-width: $bp--d--max) {
+    @content;
+  }
+}
+
+@mixin breakpoint--e {
+  @media (min-width: $bp--e--min) and (max-width: $bp--e--max) {
+    @content;
+  }
+}
+
+@mixin mobile--landscape {
+  @media (min-width: $bp--b--min) and (max-width: $bp--b--max) and (orientation:landscape) {
+    @content;
+  }
+}
+
+$susy: (
+  columns: 8,
+  gutters: 1/12,
+  global-box-sizing: border-box,
+    debug: (
+    image: hide,
+    color: rgba(#66f, .25),
+    output: overlay,
+    toggle: top right,
+  ),
+);
