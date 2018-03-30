@@ -1,7 +1,6 @@
 ## TB.D Holding Page
 
-- Add work sans typeface
 - Need to add browser prefixes 
-- Prevent initial flash in firefox
-- Inverse colors on mouseover?
-- Mobile/make responsive
+- Prevent flash (work out what is causing this, happens mainly in firefox)
+- Mobile design/make responsive
+- META

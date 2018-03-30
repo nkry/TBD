@@ -36,7 +36,9 @@ function checkTextPosition(
 	rightMaxY
 	) {
 		var posOne = elementOne.offset();
-		var posTwo = elementTwo.offset()
+        var posTwo = elementTwo.offset();
+        console.log(posOne.top)
+        console.log(leftMaxY)
     if (
         posOne.left >= leftMaxX ||
         posOne.top >= leftMaxY ||
@@ -94,28 +96,39 @@ function invert() {
 
 function init() {
     // 2px padding
-    var padding = 5;
-    var leftMinBoundsX = padding;
-    var leftMaxBoundsX = $(window).width() / 2 - (leftText.width() + padding);
+    var xPadding;
+    var yPadding;
+    if (mobile) {
+      // xPadding = 1;
+			// yPadding = 2;
+			xPadding = 2;
+      yPadding = 5;
+		}
+		else {
+			xPadding = 5;
+      yPadding = 2.5;
+		}
+    var leftMinBoundsX = xPadding;
+    var leftMaxBoundsX = $(window).width() / 2 - (leftText.width() + xPadding);
     var leftMinBoundsY = 0;
-    var leftMaxBoundsY = $(window).height() - leftText.height();
+    var leftMaxBoundsY = $(window).height() - (leftText.height() + yPadding);
 
-    var rightMinBoundsX = $(window).width() / 2 + padding;
-    var rightMaxBoundsX = $(window).width() - (rightText.width() + padding);
+    var rightMinBoundsX = $(window).width() / 2 + xPadding;
+    var rightMaxBoundsX = $(window).width() - (rightText.width() + xPadding);
     var rightMinBoundsY = 0;
-    var rightMaxBoundsY = $(window).height() - rightText.height();
+    var rightMaxBoundsY = $(window).height() - (rightText.height() + yPadding);
 
     checkTextPosition(
-				leftText,
-				rightText,
+		leftText,
+		rightText,
         leftMinBoundsX,
         leftMaxBoundsX,
         leftMinBoundsY,
-				leftMaxBoundsY,
-				rightMinBoundsX,
+		leftMaxBoundsY,
+		rightMinBoundsX,
         rightMaxBoundsX,
         rightMinBoundsY,
-				rightMaxBoundsY
+		rightMaxBoundsY
     );
 
     if (changed) {

@@ -45,7 +45,7 @@ body {
 			display: inline-block;
 			transition: display .5s linear;
 			@include breakpoint--a {
-				height: 12px;
+				height: 11px;
 			}
 		}
 		& #initial {
@@ -53,24 +53,30 @@ body {
 			// opacity: 0;
 			transition: display .5s linear;
 		}
-		& #underline {
-			text-decoration: underline;
-		}
+		// & #underline {
+			// text-decoration: underline;
+		// }
 		&:hover {
 			cursor: pointer;
 			& #logo {
 				display: none;
+				@include breakpoint--a {
+					display: inline-block;
+				}
 			}
 			& #initial {
 				display: inline-block;
 				// opacity: 1;
+				@include breakpoint--a {
+					display: none;
+				}
 			}
 		}
 	}
 	&__large {
 		z-index: 2;
-		font-size: 3.5em;
-		letter-spacing: -0.025em;
+		font-size: 3.75em;
+		letter-spacing: 0.005em;
 		display: inline-block;
 		position: relative;
 		left: 0;
@@ -78,8 +84,8 @@ body {
 		animation: moveLeftX 3s linear 0s infinite alternate, moveLeftY 4.5s linear 0s infinite alternate;
 		will-change: top, left;
 		@include breakpoint--a {
-			font-size: 2.5em;
-			animation: moveLeftXMobile 3s linear 0s infinite alternate, moveLeftYMobile 4.5s linear 0s infinite alternate;
+			font-size: 2.25em;
+			animation: moveLeftXMobile 1.5s linear 0s infinite alternate, moveLeftYMobile 3s linear 0s infinite alternate;
 		}
 		&:hover {
 			cursor: pointer;
@@ -128,8 +134,8 @@ body {
 	}
 	&__large {
 		z-index: 2;
-		font-size: 3.5em;
-		letter-spacing: -0.025em;
+		font-size: 3.75em;
+		letter-spacing: 0.005em;
 		display: inline-block;
 		position: relative;
 		left: 0;
@@ -138,8 +144,8 @@ body {
 		animation: moveRightX 3s linear -2s infinite alternate, moveRightY 4.5s linear -2s infinite alternate;
 		will-change: top, left;
 		@include breakpoint--a {
-			font-size: 2.5em;
-			animation: moveRightXMobile 3s linear 0s infinite alternate, moveRightYMobile 4.5s linear 0s infinite alternate;
+			font-size: 2.25em;
+			animation: moveRightXMobile 1.5s linear 0s infinite alternate, moveRightYMobile 3s linear 0s infinite alternate;
 		}
 		&:hover {
 			cursor: pointer;
@@ -151,16 +157,30 @@ body {
 	}
 }
 
+.mobile--text {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	text-align: center;
+	font-size: 2.25em;
+	width: calc(100% - 30px);
+	@include breakpoint--a {
+		display: inline-block;
+	}
+}
+
 // --- desktop vars ---
 // dependant on type size
 $verticalPadding: 10px;
 // also dependant on type size
-$leftTextWidth: 247px;
+$leftTextWidth: 280px;
 // 72px (original height) - 10px (approx. padding)
-$leftTextHeight: 62px;
-$rightTextWidth: 178px;
+$leftTextHeight: 78px;
+$rightTextWidth: 200px;
 // 72px (original height) - 10px (approx. padding)
-$rightTextHeight: 62px;
+$rightTextHeight: 79px;
 $leftVerticalDist: calc(100vh - #{$leftTextHeight});
 $rightVerticalDist: calc(100vh - #{$rightTextHeight});
 
@@ -168,14 +188,14 @@ $rightVerticalDist: calc(100vh - #{$rightTextHeight});
 // --- mobile vars ---
 $verticalPaddingMobile: 10px;
 // also dependant on type size
-$leftTextWidthMobile: 119px;
+$leftTextWidthMobile: 112px;
 // 72px (original height) - 10px (approx. padding)
-$leftTextHeightMobile: 35px;
-$rightTextWidthMobile: 86px;
+$leftTextHeightMobile: 31px;
+$rightTextWidthMobile: 81px;
 // 72px (original height) - 10px (approx. padding)
-$rightTextHeightMobile: 35px;
-$leftVerticalDistMobile: calc(100vh - #{$leftTextHeightMobile});
-$rightVerticalDistMobile: calc(100vh - #{$rightTextHeightMobile});
+$rightTextHeightMobile: 31px;
+$leftVerticalDistMobile: calc(100% - #{$leftTextHeightMobile});
+$rightVerticalDistMobile: calc(100% - #{$rightTextHeightMobile});
 
 // --- desktop animations ---
 @keyframes moveLeftX {
