@@ -8,8 +8,10 @@ html,body {
 	font-size: 18px; 
 	font-family: 'Work Sans', sans-serif;
 	@include breakpoint--a {
-	//  overflow: scroll;
 	 font-size: 12px;
+	}
+	@include mobile--landscape {
+		font-size: 12px;
 	}
 }
 
@@ -24,7 +26,8 @@ body {
 	width: 50%;
 	height: 100%;
 	display: inline-block;
-	position: absolute;
+	// position: absolute;
+	position: fixed;
 	border-right: 1px solid black;
 	&__info {
 		z-index: 3;
@@ -38,6 +41,11 @@ body {
 			width: calc(50vw - 30px);
 			margin: 15px 0 0 15px;
 		}
+		@include mobile--landscape {
+			font-size: 1.25em;
+			width: calc(50vw - 30px);
+			margin: 15px 0 0 15px;
+		}
 		& #logo {
 			// this is variable — will need breakpoints
 			height: 20px;
@@ -45,6 +53,9 @@ body {
 			display: inline-block;
 			transition: display .5s linear;
 			@include breakpoint--a {
+				height: 11px;
+			}
+			@include mobile--landscape {
 				height: 11px;
 			}
 		}
@@ -66,11 +77,17 @@ body {
 				@include breakpoint--a {
 					display: inline-block;
 				}
+				@include mobile--landscape {
+					display: inline-block;
+				}
 			}
 			& #initial {
 				display: inline-block;
 				// opacity: 1;
 				@include breakpoint--a {
+					display: none;
+				}
+				@include mobile--landscape {
 					display: none;
 				}
 			}
@@ -90,6 +107,10 @@ body {
 			font-size: 2.25em;
 			animation: moveLeftXMobile 2s linear 0s infinite alternate, moveLeftYMobile 3.5s linear 0s infinite alternate;
 		}
+		@include mobile--landscape {
+			font-size: 2.25em;
+			animation: moveLeftXMobile 2s linear 0s infinite alternate, moveLeftYMobile 3.5s linear 0s infinite alternate;
+		}
 		&:hover {
 			cursor: pointer;
 			-webkit-animation-play-state: paused;
@@ -105,7 +126,8 @@ body {
 	width: calc(50% - 1px);
 	height: 100%;
 	display: inline-block;
-	position: absolute;
+	// position: absolute;
+	position: fixed;
 	left: calc(50% + 1px);
 	&__info {
 		z-index: 3;
@@ -117,6 +139,11 @@ body {
 		display: inline-block;
 		width: calc(50vw - 60px);
 		@include breakpoint--a {
+			font-size: 1.25em;
+			width: calc(50vw - 30px);
+			margin: 15px 15px 0 0;
+		}
+		@include mobile--landscape {
 			font-size: 1.25em;
 			width: calc(50vw - 30px);
 			margin: 15px 15px 0 0;
@@ -150,6 +177,10 @@ body {
 			font-size: 2.25em;
 			animation: moveRightXMobile 2s linear 0s infinite alternate, moveRightYMobile 3.5s linear 0s infinite alternate;
 		}
+		@include mobile--landscape {
+			font-size: 2.25em;
+			animation: moveRightXMobile 2s linear 0s infinite alternate, moveRightYMobile 3.5s linear 0s infinite alternate;
+		}
 		&:hover {
 			cursor: pointer;
 			-webkit-animation-play-state: paused;
@@ -171,6 +202,9 @@ body {
 	width: calc(100% - 30px);
 	@include breakpoint--a {
 		display: inline-block;
+	}
+	@include mobile--landscape {
+		display: none;
 	}
 }
 

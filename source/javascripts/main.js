@@ -2,10 +2,6 @@ var ww = $(window).width();
 var mobile = ww < 481;
 var device;
 
-if (mobile) {
-    console.log("mobile!");
-}
-
 if (
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
@@ -100,9 +96,22 @@ var resizeTimer;
 $(window).on("resize", function(e) {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function() {
-			window.location.reload()
+			if (device) {
+				return false
+			}
+			if (!mobile) {
+				window.location.reload()
+			}
     }, 250);
 });
+
+// var orientationTimer;
+// window.addEventListener("orientationchange", function() {
+//     window.location.reload();
+// }, false);
+
+
+
 
 function debounce(func, wait, immediate) {
 	var timeout;
@@ -201,7 +210,7 @@ $(window).blur(function() {
 var tapped = false;
 
 $('.left--wrapper__info').on('click', function() {
-    if (mobile) {
+    if (mobile || device) {
 			if (!tapped) {
 				$('#logo').hide();
 				$('#initial--mobile').show();
